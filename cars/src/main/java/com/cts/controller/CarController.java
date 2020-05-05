@@ -3,6 +3,8 @@ package com.cts.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,12 +34,12 @@ public class CarController {
 	}
 	
 	@PostMapping("/car")
-	public void insertCar(@RequestBody CarDetails car) {
+	public void insertCar(@Valid @RequestBody CarDetails car) {
 		carService.saveCars(car);
 	}
 	
 	@PutMapping("/update/{carId}")
-	public ResponseEntity<Object> updatecar(@PathVariable("carId") Long carId, @RequestBody CarDetails car) {
+	public ResponseEntity<Object> updatecar(@PathVariable("carId") Long carId,@Valid @RequestBody CarDetails car) {
 	      
 	      carService.updatecar(carId, car);
 	      return new ResponseEntity<>(carService.updatecar(carId, car), HttpStatus.OK);
