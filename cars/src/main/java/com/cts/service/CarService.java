@@ -5,9 +5,11 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 
 import com.cts.model.CarDetails;
+import com.cts.model.CarDetailsDto;
 import com.cts.repository.CarRepository;
 
 @Service
@@ -22,8 +24,19 @@ public class CarService implements ICarService
 		return (List<CarDetails>) carRepository.findAll();
 	}
 	
-	public void saveCars(CarDetails car) {
-		carRepository.save(car);
+//	public void saveCars(CarDetails car) {
+//		carRepository.save(car);
+//	}
+	public CarDetailsDto createCar(CarDetailsDto car) {
+		ModelMapper maper=new ModelMapper();
+		maper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		CarDetails carr=maper.map(car, CarDetails.class);
+		carRepository.save(carr);
+		return null;
+	}
+	public Optional<CarDetails> get(Long carId)
+	{
+		return carRepository.findById(carId);
 	}
 	
 	//to update the detail using its id
