@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cts.model.LoginModel;
 import com.cts.model.RoleModel;
 import com.cts.service.IRoleService;
 
@@ -27,4 +28,14 @@ public class RoleController {
 		iRoleService.saveRoleDetails(roleModel);
 	}
 
+//	@RequestMapping(value = "/matchRoleDetails/{id}", method = RequestMethod.GET)
+//	public Optional<LoginModel> matchUserDetails(@PathVariable Long id) {
+//		return iRoleService.getById(id);
+//	}
+	
+	@PostMapping("/matchRoleDetails")
+	public List<RoleModel> matchRoleDetails(@RequestBody LoginModel loginModel) {
+		
+		return iRoleService.matchRole(loginModel);
+	}
 }

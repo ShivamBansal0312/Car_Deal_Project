@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
+
 @Entity
 @Table(name = "role_details")
 @Data
@@ -19,7 +20,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @NonNull
-public class RoleModel {
+public class RoleModelProxy {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +29,4 @@ public class RoleModel {
 	private String userId;
 	private String password;
 	private String userType;
-
 }

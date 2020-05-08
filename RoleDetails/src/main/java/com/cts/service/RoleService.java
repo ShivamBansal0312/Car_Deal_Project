@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cts.model.LoginModel;
 import com.cts.model.RoleModel;
 import com.cts.repository.RoleRepository;
 
@@ -22,5 +23,8 @@ public class RoleService implements IRoleService{
 	
 	public void saveRoleDetails(RoleModel roleModel) {
 		roleRepository.save(roleModel);
+	}
+	public List<RoleModel> matchRole(LoginModel loginModel){
+		return roleRepository.matchRole(loginModel);
 	}
 }

@@ -1,8 +1,6 @@
 package com.cts.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,13 +17,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @NonNull
-public class RoleModel {
-	
+public class LoginModel {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long roleId;
 	private String userId;
 	private String password;
-	private String userType;
-
 }
