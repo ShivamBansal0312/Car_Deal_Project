@@ -2,6 +2,7 @@ package com.cts.Exception;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,14 +24,16 @@ public class CarModelExceptionController
 		return new ResponseEntity<>(carNotFound, HttpStatus.NOT_FOUND);
 	}
 	
-	
-	
 //	 @ExceptionHandler({CarModelNotFoundException.class})
 //	    public void handleNotFoundException(HttpServletResponse response) throws IOException {
 //		  response.sendError(HttpStatus.NOT_FOUND.value());
 //	    }
 //	
 	
-	
+	@ExceptionHandler({CarServiceException.class , SQLException.class , NullPointerException.class})
+	public ResponseEntity<Object> handle()
+	{
+		return new ResponseEntity<>("Car Service not available" , HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	
 }

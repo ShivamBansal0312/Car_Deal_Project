@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
+import com.cts.Exception.CarServiceException;
 import com.cts.model.CarDetails;
 import com.cts.model.CarDetailsDto;
 import com.cts.repository.CarRepository;
@@ -21,7 +22,19 @@ public class CarService implements ICarService
 	CarRepository carRepository;
 	
 	public List<CarDetails> getAllCar(){
-		return (List<CarDetails>) carRepository.findAll();
+		//return (List<CarDetails>) carRepository.findAll();
+		
+		List<CarDetails> carList;
+		try
+		{
+			carList = (List<CarDetails>) carRepository.findAll();
+			
+		}
+		catch(CarServiceException ex)
+		{
+			throw new CarServiceException("Car Service is temporarily unavailable");
+		}
+		return carList;
 	}
 	
 //	public void saveCars(CarDetails car) {
