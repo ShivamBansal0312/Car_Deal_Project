@@ -20,6 +20,7 @@ import lombok.ToString;
 public class LoginModel {
 
 	@Id
-	private String userId;
+	private Long userId;
 	private String password;
+	private String userType;
 }

@@ -34,8 +34,15 @@ public class RoleController {
 //	}
 	
 	@PostMapping("/matchRoleDetails")
-	public List<RoleModel> matchRoleDetails(@RequestBody LoginModel loginModel) {
-		
-		return iRoleService.matchRole(loginModel);
+	public String matchRoleDetails(@RequestBody LoginModel loginModel) {
+				return iRoleService.matchRole(loginModel);
 	}
+	
+//	@RequestMapping(value = "/matchDetails/{id}", method = RequestMethod.GET)
+//	public Optional<RoleModel> matchDetails(@PathVariable Long id) {
+//		return iRoleService.getById(id);
+//	}
+	
+//	@PostMapping("/matchPass")
+//	public void matchPass()
 }

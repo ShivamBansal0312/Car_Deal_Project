@@ -24,7 +24,7 @@ public class RoleModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long roleId;
-	private String userId;
+	private Long userId;
 	private String password;
 	private String userType;
 
