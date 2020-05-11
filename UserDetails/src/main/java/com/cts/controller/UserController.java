@@ -3,6 +3,8 @@ package com.cts.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,18 +20,24 @@ import com.cts.service.IUserService;
 
 @RestController
 public class UserController {
+
+	Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	IUserService iUserService;
 	
 	@GetMapping("/getUserDetails")
 	public List<UserModel> getUserDetails(){
+		logger.info("Fetching All user Details...");
+		logger.error("Unable to Get Users...");
 		return iUserService.getAllUserDetails();
 	}
 	
 	@PostMapping("/setUserDetails")
 	public void insertUserDetails(@RequestBody UserModel userModel) {
 		iUserService.saveUserDetails(userModel);
+		logger.info("Data Saved Successfully");
+		logger.error("Unable to Save Data...");
 	}
 	
 	@RequestMapping(value = "/deleteUserDetails/{id}", method = RequestMethod.DELETE)

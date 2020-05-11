@@ -29,7 +29,4 @@ public class UserModel {
 	private Long mobileNumber;
 	private String city;
 	
-	
-	
-	
 }
