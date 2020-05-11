@@ -19,7 +19,9 @@ public interface ICarService {
 
 	public String deletecar(Long carId);
 	
-	public CarDetails findById(Long carId);
+	//public CarDetails findById(Long carId);
 	
 	public CarDetailsDto createCar(CarDetailsDto car);
+
+	public List<CarDetails> findById(int userId);
 }

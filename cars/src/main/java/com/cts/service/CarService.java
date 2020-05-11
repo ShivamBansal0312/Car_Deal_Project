@@ -11,6 +11,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import com.cts.Exception.CarServiceException;
 import com.cts.model.CarDetails;
 import com.cts.model.CarDetailsDto;
+import com.cts.repository.CarRepo;
 import com.cts.repository.CarRepository;
 
 @Service
@@ -20,6 +21,9 @@ public class CarService implements ICarService
     
 	@Autowired
 	CarRepository carRepository;
+
+	@Autowired
+	private CarRepo repo;
 	
 	public List<CarDetails> getAllCar(){
 		//return (List<CarDetails>) carRepository.findAll();
@@ -96,10 +100,20 @@ public class CarService implements ICarService
 //			}		
 		}
 		
-		public CarDetails findById(Long carId) {
+//		public CarDetails findById(Long carId) {
 			
 //			if(carRepository.findById(carId).isPresent()) {
-				return carRepository.findById(carId).get();
+//				return carRepository.findById(carId).get();
+//			}
+//			else {
+//				throw new CarNotFoundException("Car Model ID : "+carId+" Not Found");
+//			}
+//		}
+
+		public List<CarDetails> findById(int userId) {
+			
+//			if(carRepository.findById(carId).isPresent()) {
+			return repo.findById(userId);
 //			}
 //			else {
 //				throw new CarNotFoundException("Car Model ID : "+carId+" Not Found");
