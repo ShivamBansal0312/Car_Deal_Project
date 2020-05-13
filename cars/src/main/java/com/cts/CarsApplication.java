@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -19,10 +20,11 @@ public class CarsApplication {
 		SpringApplication.run(CarsApplication.class, args);
 	}
 
-	@Bean
-	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.cts"))
-				.build();
-	}
+//	@Bean
+//	public Docket swaggerConfiguration() { 
+//		return new 
+//			Docket(DocumentationType.SWAGGER_2).select()
+//				.paths(PathSelectors.ant("//*"))
+//				.apis(RequestHandlerSelectors.basePackage("com.cts")).build();
+//	}
 }

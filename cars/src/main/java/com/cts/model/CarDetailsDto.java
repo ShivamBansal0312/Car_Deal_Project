@@ -12,26 +12,36 @@ public class CarDetailsDto implements Serializable
 {
 	
 	private static final long serialVersionUID =5049730970690887263L;
+	
 	private Long carId;
-	 @NotNull(message = "UserId must not be empty")
-	 @Min(value = 1, message = "UserId must be greater than or equal to 1") 
+	 
+	@NotNull(message = "UserId must not be empty")
+	@Min(value = 1, message = "UserId must be greater than or equal to 1") 
     @Max(value = 1000, message = "UserId must be lower than or equal to 1000") 
 	private Long userId;
-	 @NotNull(message = "Seater Type must not be empty")
-   private Long seaterType;
-	 @NotEmpty(message = "Car Number must not be empty")
-   @Size(min=2,message="Name should be of 9 characters")
-   private String carNumber;
-	 @NotNull(message = "Year of Purchase must not be empty")
-   private Long yearOfPurchase;
+	
+	@NotNull(message = "Seater Type must not be empty")
+    private Long seaterType;
+	
+	@NotEmpty(message = "Car Number must not be empty")
+	@Size(min=2,message="Name should be of 9 characters")
+    private String carNumber;
+	 
+	@NotNull(message = "Year of Purchase must not be empty")
+    private Long yearOfPurchase;
+	
 	@NotNull(message = "Distance Travelled must not be empty")
-   private Long distanceTravelled;
+    private Long distanceTravelled;
+	
 	@NotNull(message = "Amount must not be empty")
-   private Long amount;
+    private Long amount;
+	
 	@NotEmpty(message = "Car type must not be empty")
-   private String carType;
+    private String carType;
+	
 	@NotEmpty(message = "Brand must not be empty")
-   private String brand;
+    private String brand;
+	
 	public Long getCarId() {
 		return carId;
 	}

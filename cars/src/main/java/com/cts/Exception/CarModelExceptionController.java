@@ -24,11 +24,6 @@ public class CarModelExceptionController
 		return new ResponseEntity<>(carNotFound, HttpStatus.NOT_FOUND);
 	}
 	
-//	 @ExceptionHandler({CarModelNotFoundException.class})
-//	    public void handleNotFoundException(HttpServletResponse response) throws IOException {
-//		  response.sendError(HttpStatus.NOT_FOUND.value());
-//	    }
-//	
 	
 	@ExceptionHandler({CarServiceException.class , SQLException.class , NullPointerException.class})
 	public ResponseEntity<Object> handle()

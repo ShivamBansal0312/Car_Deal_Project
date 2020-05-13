@@ -13,17 +13,14 @@ public interface ICarService {
 	
 	public List<CarDetails> getAllCars();
 	
-	//public void saveCars(CarDetails car);
+	public String updateCar(Long carId, CarDetails oldCar);
 	
-	public CarDetails updateCar(Long carId, CarDetails oldCar);
+	public Optional<CarDetails> get(Long carId);
 	
 	public List<CarDetails> findCarByUserId(Long carId);
-	
-	public CarDetails findCarByCarId(Long carId);
 
 	public String deleteCar(Long carId);
 	
 	public CarDetailsDto createCar(CarDetailsDto car);
 
-	//public List<CarDetails> getCarsByCarType(String carType);
 }

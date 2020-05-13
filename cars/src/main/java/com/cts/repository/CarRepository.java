@@ -13,6 +13,6 @@ public interface CarRepository extends JpaRepository<CarDetails, Long>{
 
 	List<CarDetails> findByUserId(Long userId);
 
-	//List<CarDetails> findByCarType(String carType);
+	
 	
 }

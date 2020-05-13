@@ -2,17 +2,18 @@ package com.cts.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.cts.Exception.CarServiceException;
 import com.cts.model.CarDetails;
 import com.cts.model.CarDetailsDto;
 import com.cts.repository.CarRepository;
+
 
 @Service
 @Transactional
@@ -21,31 +22,54 @@ public class CarService implements ICarService {
 	@Autowired
 	CarRepository carRepository;
 
-	public List<CarDetails> getAllCars() {
+	//Implementation of Logger
+	Logger log=LoggerFactory.getLogger(CarService.class);
+	
+	//Method to get all entries from DB
+	//This method implements System Exception
+	public List<CarDetails> getAllCars() 
+	{
+		//return (List<CarDetails>) carRepository.findAll();
+		log.info("getAllCars() invoked");
 		List<CarDetails> carList;
-		try {
+		try
+		{
 			carList = (List<CarDetails>) carRepository.findAll();
-
-		} catch (CarServiceException ex) {
+			log.info("try block executing");
+		} 
+		catch (CarServiceException ex) 
+		{
+			log.error("Car Service Exception encountered");
 			throw new CarServiceException("Car Service is temporarily unavailable");
 		}
 		return carList;
 	}
-
-	public CarDetailsDto createCar(CarDetailsDto car) {
+	
+	//Method to create a new entry in DB
+	//This method implements DTO Layer
+	public CarDetailsDto createCar(CarDetailsDto car)
+	{
+		log.info("createCar(CarDetailsDto car) invoked");
 		ModelMapper maper = new ModelMapper();
 		maper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		CarDetails carr = maper.map(car, CarDetails.class);
 		carRepository.save(carr);
+		log.info("createCar(CarDetailsDto car) executed");
 		return null;
 	}
 
-	public CarDetails findCarByCarId(Long carId) {
-		return carRepository.findById(carId).get();
-	}
-
+	//This method is used in Put mapping in controller
+		public Optional<CarDetails> get(Long carId)
+		{
+			return carRepository.findById(carId);
+		}
+		
+	//Method to update an existing entry in DB 
+	//This method implements Optional
 	@Override
-	public CarDetails updateCar(Long carId, CarDetails car) {
+	public String updateCar(Long carId, CarDetails car)
+	{
+		log.info("updateCar(Long carId, CarDetails car) invoked");
 		CarDetails existingCar = carRepository.findById(carId).get();
 		existingCar.setUserId(car.getUserId());
 		existingCar.setSeaterType(car.getSeaterType());
@@ -57,16 +81,23 @@ public class CarService implements ICarService {
 		existingCar.setBrand(car.getBrand());
 
 		CarDetails updatedCar = carRepository.save(existingCar);
-		return updatedCar;
+		return "Car Model with id "+carId+" is updated";
 	}
 
+	//Method to delete the detail using its id 
 	@Override
-	public String deleteCar(Long carId) {
+	public String deleteCar(Long carId) 
+	{
+		log.info(" deleteCar(Long carId) invoked");
 		carRepository.deleteById(carId);
 		return "Car Model id with " + carId + " is deleted";
 	}
 
-	public List<CarDetails> findCarByUserId(Long userId) {
+	//Method to implement Normal Search Operation by using Id
+	//This method is for Composite Microservice
+	public List<CarDetails> findCarByUserId(Long userId) 
+	{
+		log.info("findCarByUserId(Long userId) invoked");
 		return carRepository.findByUserId(userId);
 	}
 }

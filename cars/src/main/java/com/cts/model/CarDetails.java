@@ -38,7 +38,7 @@ public class CarDetails {
 	@NotNull(message = "Seater Type must not be empty")
 	private Long seaterType;
 	
-	@JsonIgnore
+	
 	@NotEmpty(message = "Car Number must not be empty")
 	@Size(min = 2, message = "Name should be of 9 characters")
 	private String carNumber;
@@ -63,5 +63,78 @@ public class CarDetails {
 		return "CarDetails [carId=" + carId + ", userId=" + userId + ", seaterType=" + seaterType + ", carNumber="
 				+ carNumber + ", yearOfPurchase=" + yearOfPurchase + ", distanceTravelled=" + distanceTravelled
 				+ ", amount=" + amount + ", carType=" + carType + ", brand=" + brand + "]";
+	
+	}
+
+	public Long getCarId() {
+		return carId;
+	}
+
+	public void setCarId(Long carId) {
+		this.carId = carId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getSeaterType() {
+		return seaterType;
+	}
+
+	public void setSeaterType(Long seaterType) {
+		this.seaterType = seaterType;
+	}
+
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+
+	public Long getYearOfPurchase() {
+		return yearOfPurchase;
+	}
+
+	public void setYearOfPurchase(Long yearOfPurchase) {
+		this.yearOfPurchase = yearOfPurchase;
+	}
+
+	public Long getDistanceTravelled() {
+		return distanceTravelled;
+	}
+
+	public void setDistanceTravelled(Long distanceTravelled) {
+		this.distanceTravelled = distanceTravelled;
+	}
+
+	public Long getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Long amount) {
+		this.amount = amount;
+	}
+
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 }
