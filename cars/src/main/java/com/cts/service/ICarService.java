@@ -11,17 +11,19 @@ import com.cts.model.CarDetailsDto;
 public interface ICarService {
 
 	
-	public List<CarDetails> getAllCar();	
+	public List<CarDetails> getAllCars();
+	
 	//public void saveCars(CarDetails car);
 	
-	public String updatecar(Long carId, CarDetails car);
-	public Optional<CarDetails> get(Long carId);
-
-	public String deletecar(Long carId);
+	public CarDetails updateCar(Long carId, CarDetails oldCar);
 	
-	//public CarDetails findById(Long carId);
+	public List<CarDetails> findCarByUserId(Long carId);
+	
+	public CarDetails findCarByCarId(Long carId);
+
+	public String deleteCar(Long carId);
 	
 	public CarDetailsDto createCar(CarDetailsDto car);
 
-	public List<CarDetails> findById(int userId);
+	//public List<CarDetails> getCarsByCarType(String carType);
 }
