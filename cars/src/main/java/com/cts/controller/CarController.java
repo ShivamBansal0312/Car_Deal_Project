@@ -37,9 +37,9 @@ public class CarController {
 
 	//Method to fetch the list of all entries in DB using User ID
 	//This method is used for Composite Microservice
-	@GetMapping("/allCarWithUserId/{userId}")
-	public List<CarDetails> findCarByUserId(@PathVariable Long userId) {
-		return carService.findCarByUserId(userId);
+	@GetMapping(path="/allCarWithUserId/{userId}")
+	public List<CarDetails> get(@PathVariable int userId) {
+		return carService.findById(userId);
 	}
 
 	//Method to create a new entry in DB

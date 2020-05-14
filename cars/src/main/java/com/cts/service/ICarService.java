@@ -16,11 +16,11 @@ public interface ICarService {
 	public String updateCar(Long carId, CarDetails oldCar);
 	
 	public Optional<CarDetails> get(Long carId);
-	
-	public List<CarDetails> findCarByUserId(Long carId);
 
 	public String deleteCar(Long carId);
 	
 	public CarDetailsDto createCar(CarDetailsDto car);
+
+	public List<CarDetails> findById(int userId);
 
 }

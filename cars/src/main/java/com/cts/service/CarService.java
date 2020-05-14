@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cts.Exception.CarServiceException;
 import com.cts.model.CarDetails;
 import com.cts.model.CarDetailsDto;
+import com.cts.repository.CarRepo;
 import com.cts.repository.CarRepository;
 
 
@@ -21,6 +22,9 @@ public class CarService implements ICarService {
 
 	@Autowired
 	CarRepository carRepository;
+
+	@Autowired
+	private CarRepo repo;
 
 	//Implementation of Logger
 	Logger log=LoggerFactory.getLogger(CarService.class);
@@ -95,9 +99,8 @@ public class CarService implements ICarService {
 
 	//Method to implement Normal Search Operation by using Id
 	//This method is for Composite Microservice
-	public List<CarDetails> findCarByUserId(Long userId) 
-	{
-		log.info("findCarByUserId(Long userId) invoked");
-		return carRepository.findByUserId(userId);
+	public List<CarDetails> findById(int userId) {
+		log.info("findById(int userId) invoked");
+		return repo.findById(userId);
 	}
 }
