@@ -13,6 +13,8 @@ public interface ICarService {
 	
 	public List<CarDetails> getAllCars();
 	
+	public List<CarDetails> findSortedCars(String sortParam);
+	
 	public String updateCar(Long carId, CarDetails oldCar);
 	
 	public Optional<CarDetails> get(Long carId);

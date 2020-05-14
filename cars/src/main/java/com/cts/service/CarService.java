@@ -14,7 +14,7 @@ import com.cts.model.CarDetails;
 import com.cts.model.CarDetailsDto;
 import com.cts.repository.CarRepo;
 import com.cts.repository.CarRepository;
-
+import org.springframework.data.domain.Sort;
 
 @Service
 @Transactional
@@ -47,6 +47,12 @@ public class CarService implements ICarService {
 			throw new CarServiceException("Car Service is temporarily unavailable");
 		}
 		return carList;
+	}
+	
+	//Method for Sorting 
+	public List<CarDetails> findSortedCars(String sortParam)
+	{
+	return (List<CarDetails>) carRepository.findAll(Sort.by(sortParam));
 	}
 	
 	//Method to create a new entry in DB

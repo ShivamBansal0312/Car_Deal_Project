@@ -41,7 +41,14 @@ public class CarController {
 	public List<CarDetails> get(@PathVariable int userId) {
 		return carService.findById(userId);
 	}
-
+	
+	//Method for Sorting the data 
+	@GetMapping("getAllSorted/{sortingParameter}")
+	public List<CarDetails> getAllSortedCars(@PathVariable String sortingParameter)
+	{
+		return carService.findSortedCars(sortingParameter);
+	}
+	
 	//Method to create a new entry in DB
 	//This method implements DTO Layer
 	//This method implements Validation
