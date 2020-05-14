@@ -15,6 +15,10 @@ import com.cts.model.CarDetailsDto;
 import com.cts.repository.CarRepo;
 import com.cts.repository.CarRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 
 @Service
 @Transactional
@@ -108,5 +112,16 @@ public class CarService implements ICarService {
 	public List<CarDetails> findById(int userId) {
 		log.info("findById(int userId) invoked");
 		return repo.findById(userId);
+	}
+	
+	//Pagination
+	@Override
+	public List<CarDetails> findPaginated(int pageNo, int pageSize)
+	{
+		// TODO Auto-generated method stub
+		
+		Pageable paging =PageRequest.of(pageNo, pageSize);
+		Page<CarDetails> pagedResult =carRepository.findAll(paging);
+		return pagedResult.toList();
 	}
 }

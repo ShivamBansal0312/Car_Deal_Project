@@ -84,6 +84,12 @@ public class CarController {
 	public ResponseEntity<Object> deleteCar(@PathVariable("carId") Long carId) {
 		return new ResponseEntity<>(carService.deleteCar(carId), HttpStatus.OK);
 	}
+	
+	//Pagination
+	@GetMapping("/getallcardetails/{pageNo}/{pageSize}")
+	public List<CarDetails> getPaginated(@PathVariable int pageNo,@PathVariable int pageSize){
+		return carService.findPaginated(pageNo,pageSize);
+	}
 }
 
 

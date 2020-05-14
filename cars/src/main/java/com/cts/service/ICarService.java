@@ -24,5 +24,7 @@ public interface ICarService {
 	public CarDetailsDto createCar(CarDetailsDto car);
 
 	public List<CarDetails> findById(int userId);
+	
+	public List<CarDetails> findPaginated(int pageNo, int pageSize);
 
 }
