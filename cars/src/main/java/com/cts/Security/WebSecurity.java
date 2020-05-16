@@ -31,7 +31,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.httpBasic().and().authorizeRequests()
-		.antMatchers("/papi/**").hasRole("ADMIN")
+		.antMatchers("/cars/**").hasRole("ADMIN")
 		.and().csrf().disable();
 		//super.configure(http);
 	}
@@ -39,8 +39,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// TODO Auto-generated method stub
-		String password=passwordEncoder().encode("password");
-		auth.inMemoryAuthentication().withUser("admin").password(password).roles("ADMIN");
+		//String password=passwordEncoder().encode("password");
+		auth.inMemoryAuthentication().withUser(username).password(password).roles("ADMIN");
 		//super.configure(auth);
 	}
 	@Bean

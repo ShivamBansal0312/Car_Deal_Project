@@ -47,7 +47,7 @@ public class CarService implements ICarService {
 		} 
 		catch (CarServiceException ex) 
 		{
-			log.error("Car Service Exception encountered");
+			log.info("Car Service Exception encountered");
 			throw new CarServiceException("Car Service is temporarily unavailable");
 		}
 		return carList;

@@ -23,4 +23,40 @@ public class LoginModel {
 	private Long userId;
 	private String password;
 	private String userType;
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+	@Override
+	public String toString() {
+		return "LoginModel [userId=" + userId + ", password=" + password + ", userType=" + userType + ", getUserId()="
+				+ getUserId() + ", getPassword()=" + getPassword() + ", getUserType()=" + getUserType()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+	public LoginModel(Long userId, String password, String userType) {
+		super();
+		this.userId = userId;
+		this.password = password;
+		this.userType = userType;
+	}
+	public LoginModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }

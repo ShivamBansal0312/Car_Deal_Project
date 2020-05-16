@@ -23,7 +23,7 @@ import com.cts.model.CarDetailsDto;
 import com.cts.service.ICarService;
 
 @RestController
-@RequestMapping("/papi")
+@RequestMapping("/cars")
 public class CarController {
 
 	@Autowired
